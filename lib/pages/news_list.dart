@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nyews_app/model/news_article.dart';
+import 'package:nyews_app/pages/detail_page.dart';
 
 class NewsListPage extends StatelessWidget {
   static const routeName = '/article_list';
@@ -29,6 +30,9 @@ class NewsListPage extends StatelessWidget {
 
   Widget _buildArticleItem(BuildContext context, NewsArticle article) {
     return ListTile(
+      onTap: () {
+        Navigator.pushNamed(context, DetailPage.routeName, arguments: article);
+      },
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       leading: Image.network(
