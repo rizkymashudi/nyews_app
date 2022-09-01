@@ -7,11 +7,6 @@ class WebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Nyeus App'),
-      ),
-      body: WebView(url: url),
-    );
+    return WebView(url: url);
   }
 }
