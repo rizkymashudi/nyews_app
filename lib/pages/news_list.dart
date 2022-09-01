@@ -17,11 +17,13 @@ class NewsListPage extends StatelessWidget {
             .loadString('lib/assets/local_data.json'),
         builder: (context, snapshot) {
           final List<NewsArticle> articles = parseArticles(snapshot.data);
-          return ListView.builder(
-            itemCount: articles.length,
-            itemBuilder: (context, index) {
-              return _buildArticleItem(context, articles[index]);
-            },
+          return Material(
+            child: ListView.builder(
+              itemCount: articles.length,
+              itemBuilder: (context, index) {
+                return _buildArticleItem(context, articles[index]);
+              },
+            ),
           );
         },
       ),
@@ -29,18 +31,24 @@ class NewsListPage extends StatelessWidget {
   }
 
   Widget _buildArticleItem(BuildContext context, NewsArticle article) {
-    return ListTile(
-      onTap: () {
-        Navigator.pushNamed(context, DetailPage.routeName, arguments: article);
-      },
-      contentPadding:
-          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      leading: Image.network(
-        article.urlToImage,
-        width: 100,
+    return Hero(
+      tag: article.urlToImage,
+      child: Material(
+        child: ListTile(
+          onTap: () {
+            Navigator.pushNamed(context, DetailPage.routeName,
+                arguments: article);
+          },
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          leading: Image.network(
+            article.urlToImage,
+            width: 100,
+          ),
+          title: Text(article.title),
+          subtitle: Text(article.author),
+        ),
       ),
-      title: Text(article.title),
-      subtitle: Text(article.author),
     );
   }
 }
