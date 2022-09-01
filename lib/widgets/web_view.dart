@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nyews_app/widgets/custom_scaffold.dart';
 
 class WebView extends StatelessWidget {
   static const routeName = '/article_web';
@@ -7,6 +8,8 @@ class WebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(url: url);
+    return CustomScaffold(
+      body: WebView(url: url),
+    );
   }
 }
