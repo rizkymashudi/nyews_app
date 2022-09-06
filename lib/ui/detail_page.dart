@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nyews_app/model/news_article.dart';
+import 'package:nyews_app/data/model/news_article.dart';
 import 'package:nyews_app/widgets/web_view.dart';
 
 class DetailPage extends StatelessWidget {
