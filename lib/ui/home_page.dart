@@ -14,7 +14,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int bottomNavIndex = 0;
+  int _bottomNavIndex = 0;
+
+  final List<Widget> _listWidget = [
+    const ArticleListPage(),
+    const SettingsPage()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +29,10 @@ class _HomePageState extends State<HomePage> {
 
   Widget _androidBuilder(BuildContext context) {
     return Scaffold(
-      body: bottomNavIndex == 0 ? const ArticleListPage() : const Placeholder(),
+      body: _listWidget[_bottomNavIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: secondaryColor,
-        currentIndex: bottomNavIndex,
+        currentIndex: _bottomNavIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.public), label: 'Headline'),
           BottomNavigationBarItem(
@@ -35,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         ],
         onTap: (selected) {
           setState(() {
-            bottomNavIndex = selected;
+            _bottomNavIndex = selected;
           });
         },
       ),
@@ -54,14 +59,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       tabBuilder: (context, index) {
-        switch (index) {
-          case 0:
-            return const ArticleListPage();
-          case 1:
-            return const SettingsPage();
-          default:
-            return const Placeholder();
-        }
+        return _listWidget[_bottomNavIndex];
       },
     );
   }

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:nyews_app/data/model/news_article.dart';
 import 'package:nyews_app/widgets/web_view.dart';
 
-class DetailPage extends StatelessWidget {
+class ArticleDetailPage extends StatelessWidget {
   static const routeName = '/article_detail';
 
   final NewsArticle article;
-  const DetailPage({super.key, required this.article});
+  const ArticleDetailPage({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {

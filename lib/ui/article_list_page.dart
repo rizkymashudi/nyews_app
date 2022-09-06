@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nyews_app/data/model/news_article.dart';
-import 'package:nyews_app/ui/detail_page.dart';
+import 'package:nyews_app/ui/article_detail_page.dart';
 import 'package:nyews_app/widgets/platform_widget.dart';
 
 class ArticleListPage extends StatelessWidget {
@@ -32,7 +32,7 @@ class ArticleListPage extends StatelessWidget {
       child: Material(
         child: ListTile(
           onTap: () {
-            Navigator.pushNamed(context, DetailPage.routeName,
+            Navigator.pushNamed(context, ArticleDetailPage.routeName,
                 arguments: article);
           },
           contentPadding:

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:nyews_app/widgets/platform_widget.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -42,22 +41,43 @@ class SettingsPage extends StatelessWidget {
             trailing: Switch.adaptive(
                 value: false,
                 onChanged: (value) {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text('Coming soon!'),
-                          content:
-                              const Text('This feature will be coming soon!'),
-                          actions: [
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('OK'))
-                          ],
+                  defaultTargetPlatform == TargetPlatform.iOS
+                      ? showCupertinoDialog(
+                          context: context,
+                          barrierDismissible: true,
+                          builder: (context) {
+                            return CupertinoAlertDialog(
+                              title: const Text('Coming soon!'),
+                              content: const Text(
+                                  'This feature will be coming soon!'),
+                              actions: [
+                                CupertinoDialogAction(
+                                  child: const Text('Ok'),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ],
+                            );
+                          })
+                      : showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text('Coming Soon!'),
+                              content: const Text(
+                                  'This feature will be coming soon!'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
                         );
-                      });
                 }),
           ),
         ),

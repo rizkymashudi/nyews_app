@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nyews_app/data/model/news_article.dart';
-import 'package:nyews_app/ui/detail_page.dart';
+import 'package:nyews_app/ui/article_detail_page.dart';
 import 'package:nyews_app/ui/home_page.dart';
 import 'package:nyews_app/common/style.dart';
 import 'package:nyews_app/widgets/web_view.dart';
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       initialRoute: HomePage.routeName,
       routes: {
         HomePage.routeName: (context) => const HomePage(),
-        DetailPage.routeName: (context) => DetailPage(
+        ArticleDetailPage.routeName: (context) => ArticleDetailPage(
             article: ModalRoute.of(context)?.settings.arguments as NewsArticle),
         WebView.routeName: (context) =>
             WebView(url: ModalRoute.of(context)?.settings.arguments as String)
